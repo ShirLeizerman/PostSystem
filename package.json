@@ -1,5 +1,5 @@
 {
-  "name": "gdpr",
+  "name": "post-system",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

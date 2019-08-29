@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gdpr": {
+    "post-system": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/gdpr",
+            "outputPath": "dist/post-system",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "gdpr:build"
+            "browserTarget": "post-system:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "gdpr:build:production"
+              "browserTarget": "post-system:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "gdpr:build"
+            "browserTarget": "post-system:build"
           }
         },
         "test": {
@@ -117,16 +117,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "gdpr:serve"
+            "devServerTarget": "post-system:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "gdpr:serve:production"
+              "devServerTarget": "post-system:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "gdpr"
+  "defaultProject": "post-system"
 }
