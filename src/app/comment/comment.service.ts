@@ -50,7 +50,7 @@ export class CommentService {
 
   public addNewComment(comment: Comment) {
     comment.id = this.getRandomId();
-    this.commentList.push(comment);
+    this.commentList = [...this.commentList, comment];
 
     return this.getCommentList();
   }

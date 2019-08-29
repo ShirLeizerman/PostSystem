@@ -1,7 +1,11 @@
 <header>Comment List</header>
 <cdk-virtual-scroll-viewport itemSize="50" class="comment-list-viewport card-deck">
     <div *cdkVirtualFor="let comment of commentList">
-        <ps-comment-container class="card" [comment]="comment" [commentListTags]="commentListTags" (newComment)="updatedComment.emit($event)"></ps-comment-container>
+        <ps-comment-container class="card" 
+                [comment]="comment" [commentListTags]="commentListTags" 
+                (newComment)="updatedComment.emit($event)"></ps-comment-container>
     </div>
 </cdk-virtual-scroll-viewport>
-<ps-comment-container [fixEditMode]="true" [comment]="newCommentToAdd" [commentListTags]="commentListTags" (newComment)="onNewComment($event)"></ps-comment-container>
+<ps-comment-container [fixEditMode]="true" 
+        [comment]="newCommentToAdd" [commentListTags]="commentListTags" 
+        (newComment)="onNewComment($event)"></ps-comment-container>

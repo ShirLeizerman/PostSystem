@@ -25,6 +25,7 @@ export class  CommentListComponent {
     }
 
     public onNewComment($event) {
+        console.log('onNewComment', $event);
         this.newComment.emit($event);
         this.newCommentToAdd = this.getNewComment();
     }

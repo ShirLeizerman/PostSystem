@@ -19,6 +19,7 @@ export class  CommentContainerComponent {
     set comment(value: Comment) {
         console.log('**** CommentContainerComponent - comment ****', value);
         this._comment = value;
+        this.setTempComment();
     }
 
     // tslint:disable-next-line: variable-name
@@ -54,8 +55,15 @@ export class  CommentContainerComponent {
 
     public enableEdit() {
         this.editMode = true;
-        // tslint:disable-next-line: max-line-length
-        this.tempComment = new Comment(this.comment.id, this.comment.title, this.comment.text, this.comment.tags, this.comment.creationTime);
+        this.setTempComment();
+    }
+
+    private setTempComment() {
+        this.tempComment = new Comment(this.comment.id,
+                                        this.comment.title,
+                                        this.comment.text,
+                                        this.comment.tags,
+                                        this.comment.creationTime);
     }
 
     public cancelEdit() {
