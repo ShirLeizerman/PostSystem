@@ -14,12 +14,13 @@
         <div [innerHtml]="comment.text"></div>
     </div>
 </ps-comment-template>
-<ps-comment-template *ngIf="editMode">
+<ps-comment-template *ngIf="editMode && tempComment">
     <div header>
         <input [(ngModel)]="tempComment.title" class="comment-title">
     </div>
     <div body>
-        <textarea [(ngModel)]="tempComment.text" name="edit-comment" cols="30" rows="10"></textarea>
+        <textarea [(ngModel)]="tempComment.text" name="edit-comment" rows="4" cols="206"></textarea>
+        <chips-autocomplete [commentTagList]="tempComment.tags" [commentListTags]="commentListTags"></chips-autocomplete>
     </div>
     <div footer>
         <div class="edit-actions">

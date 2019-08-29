@@ -11,12 +11,21 @@ import { Comment } from '../comment.model';
 
 export class  CommentListComponent {
 
+    @Input() commentListTags: string[];
     @Input() commentList: Observable<Comment>;
     @Output() newComment: EventEmitter<Comment> = new EventEmitter<Comment>();
+    @Output() updatedComment: EventEmitter<Comment> = new EventEmitter<Comment>();
+
+    public newCommentToAdd = this.getNewComment();
 
     constructor() { }
 
-    public log(value) {
-        console.log('**** CommentListComponent **** ', value);
+    public getNewComment() {
+        return new Comment('', '', '', [], null);
+    }
+
+    public onNewComment($event) {
+        this.newComment.emit($event);
+        this.newCommentToAdd = this.getNewComment();
     }
 }

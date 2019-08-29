@@ -9,6 +9,8 @@ import { Comment } from '../comment.model';
 
 export class  CommentContainerComponent {
 
+    @Input() commentListTags: string[];
+
     // tslint:disable-next-line: variable-name
     private _comment: Comment;
     @Input() get comment() {
@@ -18,17 +20,42 @@ export class  CommentContainerComponent {
         console.log('**** CommentContainerComponent - comment ****', value);
         this._comment = value;
     }
-    @Input() editMode = false;
+
+    // tslint:disable-next-line: variable-name
+    _fixEditMode = false;
+    @Input() get fixEditMode() {
+        return this._fixEditMode;
+    }
+    set fixEditMode(value: boolean) {
+        if (value) {
+            this._fixEditMode = value;
+            this.enableEdit();
+        }
+    }
 
     @Output() newComment: EventEmitter<Comment> = new EventEmitter<Comment>();
 
     public tempComment: Comment;
 
+    // tslint:disable-next-line: variable-name
+    _editMode = (this.fixEditMode) ? true : false;
+    get editMode() {
+        return this._editMode;
+    }
+    set editMode(value: boolean) {
+        if (this.fixEditMode) {
+            this._editMode = true;
+        } else {
+            this._editMode = value;
+        }
+    }
+
     constructor() { }
 
     public enableEdit() {
         this.editMode = true;
-        this.tempComment = new Comment(this.comment.id, this.comment.title, this.comment.text, this.comment.tags);
+        // tslint:disable-next-line: max-line-length
+        this.tempComment = new Comment(this.comment.id, this.comment.title, this.comment.text, this.comment.tags, this.comment.creationTime);
     }
 
     public cancelEdit() {

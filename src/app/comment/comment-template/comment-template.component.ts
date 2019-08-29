@@ -5,14 +5,10 @@ import { Comment } from '../comment.model';
 @Component({
     selector: 'ps-comment-template',
     templateUrl: './comment-template.component.html',
-    styleUrls: ['./comment-template.component.less'],
-    // changeDetection: ChangeDetectionStrategy.OnPush
+    styleUrls: ['./comment-template.component.less']
 })
 
 export class  CommentTemplateComponent {
-
-    @Input() showFooter = true;
-
     constructor() { }
 
     public log(value) {

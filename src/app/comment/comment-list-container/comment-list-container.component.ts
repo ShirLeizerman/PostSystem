@@ -11,19 +11,48 @@ import { CommentService } from 'src/app/comment/comment.service';
 
 export class  CommentListContainerComponent implements OnInit {
 
-    public commentList = [];
+    public commentList: Comment[] = [];
+    public commentListTags: string[] = [];
 
     constructor(private commentService: CommentService) { }
 
     ngOnInit() {
         this.commentService.getCommentList()
           .subscribe((data: any) => {
-              console.log('**** CommentListContainerComponent ****', data);
               this.commentList = data;
         });
     }
 
     public addNewComment(comment: Comment) {
-        this.commentService.updateComment(comment);
+        this.commentService.addNewComment(comment)
+            .subscribe((updateCommentList: Comment[]) => {
+                this.setComponentDataByUpdatedCommentList(updateCommentList);
+      });
+    }
+
+    public updateComment(comment: Comment) {
+        this.commentService.updateComment(comment)
+            .subscribe((updateCommentList: Comment[]) => {
+                this.setComponentDataByUpdatedCommentList(updateCommentList);
+      });
+    }
+
+    private setComponentDataByUpdatedCommentList(updateCommentList) {
+        this.commentList = updateCommentList;
+        this.commentListTags = this.getTagFromList(this.commentList);
+    }
+
+    private getTagFromComment(comment: Comment): string[] {
+        return comment.tags;
+    }
+
+    private getTagFromList(commentList: Comment[]): string[] {
+        const tagList = new Set<string>();
+        let commentTagList: string[];
+        commentList.forEach(comment => {
+            commentTagList = this.getTagFromComment(comment);
+            commentTagList.forEach(commentTag => tagList.add(commentTag));
+        });
+        return [...tagList];
     }
 }
