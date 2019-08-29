@@ -1,0 +1,7 @@
+<header>Comment List</header>
+<cdk-virtual-scroll-viewport itemSize="50" class="comment-list-viewport">
+    {{log(commentList)}}
+    <div *cdkVirtualFor="let comment of commentList" class="comment-container">
+        <ps-comment-container [comment]="comment" (newComment)="newComment.emit($event)"></ps-comment-container>
+    </div>
+</cdk-virtual-scroll-viewport>

@@ -1,0 +1,60 @@
+<ps-comment-template *ngIf="!editMode">
+    <div header>
+        <div class="comment-title">{{comment.title}}</div>
+        <div class="comment-actions">
+            <button mat-icon-button aria-label="edit comment" (click)="enableEdit()">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button aria-label="delete comment">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div body>
+        <div [innerHtml]="comment.text"></div>
+    </div>
+</ps-comment-template>
+<ps-comment-template *ngIf="editMode">
+    <div header>
+        <input [(ngModel)]="tempComment.title" class="comment-title">
+    </div>
+    <div body>
+        <textarea [(ngModel)]="tempComment.text" name="edit-comment" cols="30" rows="10"></textarea>
+    </div>
+    <div footer>
+        <div class="edit-actions">
+            <button mat-raised-button aria-label="cancel comment" (click)="cancelEdit()">
+                cancel
+            </button>
+            <button mat-raised-button aria-label="save comment" (click)="saveComment()">
+                save
+            </button>
+        </div>
+    </div>
+</ps-comment-template>
+
+<!-- <div class="comment-container">
+    <div class="comment-header">
+        <div class="comment-actions">
+            <button *ngIf="!editMode" mat-icon-button aria-label="edit comment" (click)="toggleEdit()">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button *ngIf="!editMode" mat-icon-button aria-label="delete comment">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="comment-body" [innerHtml]="this.comment.text">
+         {{comment.text}} 
+    </div>
+    <div class="comment-footer">
+        <div *ngIf="editMode" class="edit-actions">
+            <button mat-raised-button aria-label="cancel comment" (click)="cancelEdit()">
+                cancel
+            </button>
+            <button mat-raised-button aria-label="save comment" (click)="saveComment()">
+                save
+            </button>
+        </div>
+    </div>
+</div> -->

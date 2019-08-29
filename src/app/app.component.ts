@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.less']
 })
-export class AppComponent {
-  title = 'gdpr';
+export class AppComponent implements OnInit {
+  title = 'Post System';
+
+  constructor() {}
+
+  ngOnInit() {
+  }
 }
