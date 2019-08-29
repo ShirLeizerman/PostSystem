@@ -1,5 +1,7 @@
 <div class="comment-list-container">
-    <filter-string class="filter-container" [stringList]="commentListTags" [filterLabel]="'Filter by tag'"></filter-string>
-    <ps-comment-list [commentList]="commentList" [commentListTags]="commentListTags"
+    <filter-string class="filter-container" 
+            [stringList]="commentListTags" [filterLabel]="'Filter by tag'"
+            (newFilter)="newFilterSelection($event)"></filter-string>
+    <ps-comment-list [commentList]="commentListFiltered" [commentListTags]="commentListTags"
             (newComment)="addNewComment($event)" (updatedComment)="updateComment($event)"></ps-comment-list>
 </div>

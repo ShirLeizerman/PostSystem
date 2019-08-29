@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -12,6 +12,8 @@ export class  FilterStringComponent {
 
     @Input() stringList: string[];
     @Input() filterLabel: string;
+
+    @Output() newFilter: EventEmitter<Comment> = new EventEmitter<Comment>();
 
     constructor() { }
 }

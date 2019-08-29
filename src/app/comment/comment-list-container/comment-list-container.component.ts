@@ -12,14 +12,16 @@ import { CommentService } from 'src/app/comment/comment.service';
 export class  CommentListContainerComponent implements OnInit {
 
     public commentList: Comment[] = [];
+    public commentListFiltered: Comment[] = [];
     public commentListTags: string[] = [];
+    private TagFilter: string[] = [];
 
     constructor(private commentService: CommentService) { }
 
     ngOnInit() {
         this.commentService.getCommentList()
-          .subscribe((data: any) => {
-              this.commentList = data;
+          .subscribe((updateCommentList: Comment[]) => {
+            this.setComponentDataByUpdatedCommentList(updateCommentList);
         });
     }
 
@@ -39,6 +41,7 @@ export class  CommentListContainerComponent implements OnInit {
 
     private setComponentDataByUpdatedCommentList(updateCommentList) {
         this.commentList = updateCommentList;
+        this.commentListFiltered = this.getFilteredCommentList(this.commentList, this.TagFilter);
         this.commentListTags = this.getTagFromList(this.commentList);
     }
 
@@ -54,5 +57,19 @@ export class  CommentListContainerComponent implements OnInit {
             commentTagList.forEach(commentTag => tagList.add(commentTag));
         });
         return [...tagList];
+    }
+
+    public newFilterSelection($event) {
+        this.TagFilter = $event.value;
+        this.commentListFiltered = this.getFilteredCommentList(this.commentList, this.TagFilter);
+    }
+
+    private getFilteredCommentList(commentList: Comment[], filterTagList: string[]): Comment[] {
+        if (filterTagList.length === 0) {
+            return commentList;
+        }
+
+        const tagSet = new Set(filterTagList);
+        return commentList.filter(comment => comment.tags.filter(tag => tagSet.has(tag)).length > 0);
     }
 }

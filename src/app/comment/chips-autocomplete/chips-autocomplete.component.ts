@@ -1,5 +1,5 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, ElementRef, ViewChild, Input} from '@angular/core';
+import {Component, ElementRef, ViewChild, Input, Output, EventEmitter} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
@@ -26,6 +26,8 @@ export class ChipsAutocompleteComponent {
 
   @Input() commentTagList: string[] = [];
   @Input() commentListTags: string[] = [];
+
+  @Output() newChips: EventEmitter<Comment> = new EventEmitter<Comment>();
 
   @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;

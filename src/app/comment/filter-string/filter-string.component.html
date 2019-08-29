@@ -1,7 +1,7 @@
 <div class="filter-string">
     <mat-form-field>
-        <mat-label>filterLabel</mat-label>
-        <mat-select [formControl]="strings" multiple>
+        <mat-label>{{filterLabel}}</mat-label>
+        <mat-select [formControl]="strings" multiple (selectionChange)="newFilter.emit($event)">
             <mat-option *ngFor="let str of stringList" [value]="str">{{str}}</mat-option>
         </mat-select>
     </mat-form-field>

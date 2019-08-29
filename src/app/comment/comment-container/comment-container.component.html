@@ -20,7 +20,8 @@
     </div>
     <div body>
         <textarea [(ngModel)]="tempComment.text" name="edit-comment" rows="4" cols="206"></textarea>
-        <chips-autocomplete [commentTagList]="tempComment.tags" [commentListTags]="commentListTags"></chips-autocomplete>
+        <chips-autocomplete [commentTagList]="tempComment.tags" [commentListTags]="commentListTags"
+                (newChips)="newTagSelected($event)"></chips-autocomplete>
     </div>
     <div footer>
         <div class="edit-actions">

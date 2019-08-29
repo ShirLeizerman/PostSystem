@@ -66,4 +66,8 @@ export class  CommentContainerComponent {
         this.editMode = false;
         this.newComment.emit(this.tempComment);
     }
+
+    public newTagSelected($event) {
+        console.log('**** newTagSelected', $event);
+    }
 }

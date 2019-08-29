@@ -4,6 +4,7 @@
             *ngFor="let tag of commentTagList"
             [selectable]="selectable"
             [removable]="removable"
+            (selectionChange)="newChips.emit($event)"
             (removed)="remove(tag)">
             {{tag}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
