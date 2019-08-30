@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Comment } from './comment.model';
-import { Observable } from 'rxjs';
 import { of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -11,25 +10,25 @@ export class CommentService {
   private commentListJson = [{
       id: '1',
       title: 'first msg',
-      text: 'first massage text',
+      text: 'first massage 5 + 6 + 7 + 8 text 5 + 6 + 7',
       tags: ['firstTag1', 'firstTag2', 'firstTag3']
     },
     {
       id: '2',
       title: 'second msg',
-      text: 'second massage text',
+      text: 'second massage 3+4+5 text',
       tags: ['secondTag1', 'secondTag2', 'secondTag3']
     },
     {
       id: '3',
       title: 'third msg',
-      text: 'third massage <div> text in div </div> text',
+      text: 'third massage <div> text in <div> text in div </div> div </div> text',
       tags: ['thirdTag1', 'thirdTag2', 'thirdTag3']
     },
     {
       id: '4',
       title: 'fourth msg',
-      text: 'fourth massage text',
+      text: 'fourth massage <div> text in div </div> <script>alert("0wned")</script>  <div> text in div </div> text',
       tags: ['fourthTag1', 'fourthTag2', 'fourthTag3']
     }
   ];

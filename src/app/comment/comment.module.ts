@@ -4,12 +4,10 @@ import { CommentListContainerComponent } from './comment-list-container/comment-
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentContainerComponent } from './comment-container/comment-container.component';
 import { CommentRoutingModule } from './comment-routing.module';
-import { MaterialModule } from './material-module.module';
 import { CommentTemplateComponent } from './comment-template/comment-template.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FilterStringComponent } from './filter-string/filter-string.component';
-import { ChipsAutocompleteComponent } from './chips-autocomplete/chips-autocomplete.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -17,7 +15,7 @@ import { ChipsAutocompleteComponent } from './chips-autocomplete/chips-autocompl
         FormsModule,
         ReactiveFormsModule,
         CommentRoutingModule,
-        MaterialModule,
+        SharedModule,
         NgbModule
     ],
     exports: [
@@ -28,8 +26,6 @@ import { ChipsAutocompleteComponent } from './chips-autocomplete/chips-autocompl
         CommentListComponent,
         CommentContainerComponent,
         CommentTemplateComponent,
-        FilterStringComponent,
-        ChipsAutocompleteComponent
     ]
   })
   export class CommentModule {}

@@ -11,17 +11,19 @@
         </div>
     </div>
     <div body>
-        <div [innerHtml]="comment.text"></div>
+        <div [innerHtml]="evalExpressionService.evalSimpleExpressions(comment.text)"></div>
+        <mat-chip-list aria-label="Fish selection">
+            <mat-chip *ngFor="let tag of comment.tags">{{tag}}</mat-chip>
+        </mat-chip-list>
     </div>
 </ps-comment-template>
 <ps-comment-template *ngIf="editMode && tempComment">
     <div header>
-        <input [(ngModel)]="tempComment.title" class="comment-title">
+        <input class="edit-comment-title" [(ngModel)]="tempComment.title">
     </div>
     <div body>
-        <textarea [(ngModel)]="tempComment.text" name="edit-comment" rows="4" cols="206"></textarea>
-        <chips-autocomplete [commentTagList]="tempComment.tags" [commentListTags]="commentListTags"
-                (newChips)="newTagSelected($event)"></chips-autocomplete>
+        <textarea class="edit-comment-text" [(ngModel)]="tempComment.text" name="edit-comment" rows="4"></textarea>
+        <chips-autocomplete [commentTagList]="tempComment.tags" [commentListTags]="commentListTags"></chips-autocomplete>
     </div>
     <div footer>
         <div class="edit-actions">

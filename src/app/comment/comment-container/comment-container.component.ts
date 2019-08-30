@@ -1,5 +1,6 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Comment } from '../comment.model';
+import { EvalExpressionService } from 'src/app/shared/eval-expression.service';
 
 @Component({
     selector: 'ps-comment-container',
@@ -51,7 +52,7 @@ export class  CommentContainerComponent {
         }
     }
 
-    constructor() { }
+    constructor(public evalExpressionService: EvalExpressionService) { }
 
     public enableEdit() {
         this.editMode = true;
@@ -73,9 +74,5 @@ export class  CommentContainerComponent {
     public saveComment() {
         this.editMode = false;
         this.newComment.emit(this.tempComment);
-    }
-
-    public newTagSelected($event) {
-        console.log('**** newTagSelected', $event);
     }
 }
